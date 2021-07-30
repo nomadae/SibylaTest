@@ -1,0 +1,27 @@
+<div class="wrapper">
+  <div class="item">
+    <h1>Welcome, login now!</h1>
+  </div>
+  <form [formGroup]="loginForm">
+  <div class="item">
+    <mat-form-field appearance="outline" [style.width.px]=375 >
+      <mat-label>Username or email</mat-label>
+      <input matInput formControlName="username" required>
+      <mat-error *ngIf="!get_username().valid"> Enter at least six characters </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="item">
+    <mat-form-field appearance="outline" [style.width.px]=375 >
+      <mat-label>Enter your password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="!get_password().valid"> Enter at least six characters </mat-error>
+    </mat-form-field>
+  </div>
+  </form>
+  <div class="item">
+    <button mat-raised-button color="primary" [style.width.px]=250 (click)="submit()">Submit</button>
+  </div>
+</div>
